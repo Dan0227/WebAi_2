@@ -1,5 +1,6 @@
 import express from "express";
 import { register, login } from "./controllers/authentication.controller.js";
+import { connectDB } from "./public/db.js"
 
 //Fix para __dirname
 import path from "path";
@@ -8,6 +9,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 //Server
 const app = express();
+connectDB()
 app.set("port", 4000);
 app.listen(app.get("port"));
 console.log(`Server port ${app.get("port")}`);
