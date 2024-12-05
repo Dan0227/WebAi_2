@@ -23,4 +23,4 @@ app.get("/",(req, res)=> res.sendFile(__dirname + "/pages/login.html"));
 app.get("/register",(req, res)=> res.sendFile(__dirname + "/pages/register.html"));
 app.get("/chat",(req, res)=> res.sendFile(__dirname + "/pages/chat/chat.html"));
 app.post("/api/register",register);
-app.post("/api/register",login);
+app.post("/api/login",login);
