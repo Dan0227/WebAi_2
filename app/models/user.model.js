@@ -1,15 +1,15 @@
-import mongoose, { Types } from "mongoose";
+import mongoose from "mongoose";
 
-export const user = new mongoose.Schema(
+const userSchema = new mongoose.Schema(
     {
-        userName: {
-            Types: String,
+        username: {
+            type: String,
             required: true,
             unique: true,
             trim: true,
         },
         email: {
-            Types: String,
+            type: String,
             require: true,
             unique: true,
             trim: true,
@@ -25,3 +25,5 @@ export const user = new mongoose.Schema(
         }
     }
 )
+
+export default mongoose.model("User", userSchema);

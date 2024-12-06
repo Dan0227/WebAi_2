@@ -4,9 +4,9 @@ document.getElementById('register-form').addEventListener("submit", async(e) => 
     const user = document.getElementById('InputUser').value;
     const email = document.getElementById('InputEmail').value;
     const password = document.getElementById('InputPassword').value;
-    const tel = document.getElementById('InputTel').value;
+    const phone = document.getElementById('InputTel').value;
 
-    console.log(tel)
+    console.log(phone)
 
     const res = await fetch("http://localhost:4000/api/register",{
         method:"POST",
@@ -16,8 +16,8 @@ document.getElementById('register-form').addEventListener("submit", async(e) => 
         body: JSON.stringify({
             user: user,
             email: email,
-            pass: password,
-            tel: tel,
+            password: password,
+            phone: phone,
         })
     })
 });
