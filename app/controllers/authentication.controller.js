@@ -14,19 +14,19 @@ export async function register(req, res){
     const phone = req.body.phone;
 
     if(!username || !email || !password || !phone){
-        res.status(400).send({status:"Error", message:"Los campos están incompletos"})
+        res.status(400).send({status:"Error", message:"Los campos están incompletos"});
     };
 
     const userExists = await User.findOne({ username });
     if(userExists){
-        console.log(`usuario ${username} ya exite en la base de datos`)
-        return res.status(409).send({status:"Error", message:"Este usuario ya ha sido resgistrado"})
+        console.log(`usuario ${username} ya exite en la base de datos`);
+        return res.status(409).send({status:"Error", message:"Este usuario ya ha sido resgistrado"});
 };
     
     const emailExists = await User.findOne({ email });
     if(emailExists){
-        console.log(`correo ${email} ya exite en la base de datos`)
-        return res.status(409).send({status:"Error", message:"Este correo ya ha sido resgistrado"})
+        console.log(`correo ${email} ya exite en la base de datos`);
+        return res.status(409).send({status:"Error", message:"Este correo ya ha sido resgistrado"});
     };
     
     const salt = await bcrypt.genSalt(5);
@@ -38,9 +38,9 @@ export async function register(req, res){
         password: hashPassword,
         phone,
     })
-    console.log(newUser)
+    console.log(newUser);
     const userSaved = await newUser.save();
 
-    res.status(201).send({status:"ok",message:`usuario ${userSaved.username} registrado correctamente`, redirect:"/"})
-    console.log(`usuario agregado ${userSaved.username}`)
+    res.status(201).send({status:"ok",message:`usuario ${userSaved.username} registrado correctamente`, redirect:"/"});
+    console.log(`usuario agregado ${userSaved.username}`);
 };

@@ -12,3 +12,11 @@ body {
 a {
     text-decoration: none;
 }
+
+.error{
+    color: rgba(255, 81, 81);
+}
+
+.escondido{
+    display: none;
+}

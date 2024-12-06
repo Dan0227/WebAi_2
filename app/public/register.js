@@ -1,3 +1,5 @@
+const messageError = document.getElementsByClassName("error")[0];
+
 document.getElementById('register-form').addEventListener("submit", async(e) => {
     e.preventDefault();
 
@@ -20,7 +22,7 @@ document.getElementById('register-form').addEventListener("submit", async(e) => 
             phone: phone,
         })
     });
-    if(!res.ok) return;
+    if(!res.ok) return messageError.classList.toggle("escondido", false);
 
     const resJson = await res.json();
     if(resJson.redirect){
