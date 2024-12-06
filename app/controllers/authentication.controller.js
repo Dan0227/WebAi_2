@@ -2,11 +2,11 @@ import bcrypt from "bcryptjs";
 import User from "../models/user.model.js";
 
 export async function login(req, res){
+    console.log(req.body);
 
 };
 
 export async function register(req, res){
-    console.log(req.body);
 
     const username = req.body.user;
     const email = req.body.email;

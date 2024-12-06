@@ -8,8 +8,6 @@ document.getElementById('register-form').addEventListener("submit", async(e) => 
     const password = document.getElementById('InputPassword').value;
     const phone = document.getElementById('InputTel').value;
 
-    console.log(phone)
-
     const res = await fetch("http://localhost:4000/api/register",{
         method:"POST",
         headers:{
