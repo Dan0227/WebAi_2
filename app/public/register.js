@@ -19,5 +19,11 @@ document.getElementById('register-form').addEventListener("submit", async(e) => 
             password: password,
             phone: phone,
         })
-    })
+    });
+    if(!res.ok) return;
+
+    const resJson = await res.json();
+    if(resJson.redirect){
+        window.location.href = resJson.redirect;
+    }
 });
