@@ -2,14 +2,26 @@ import bcrypt from "bcryptjs";
 import User from "../models/user.model.js";
 
 export async function login(req, res){
-    console.log(req.body);
+    const email = req.body.email;
+    const password = req.body.password;
+    
+    if( !email || !password ){
+        res.status(400).send({status:"Error", message:"Los campos están incompletos"});
+    };
 
+    const user = await User.findOne({ email });
+    if(!user){
+        return res.status(404).send({status:"Error",message:"Error durante el login"});
+    };
+
+    const loginRigth = await bcrypt.compare(password, user.password);
+    console.log(loginRigth);
 };
 
 export async function register(req, res){
 
     const username = req.body.user;
-    const email = req.body.email;
+    const email = req.body.email; 
     const password = req.body.password;
     const phone = req.body.phone;
 
